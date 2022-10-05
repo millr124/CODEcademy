@@ -1,0 +1,57 @@
+// SLEEP DEBT CALCULATOR
+
+const getSleepHours = (day) => {
+    day = day.toLowerCase();
+    switch (day) {
+      case 'monday':
+      return 8
+      break;
+      case 'tuesday':
+      return 7
+      break;
+      case 'wednesday':
+      return 6;
+      break;
+      case 'thursday':
+      return 9;
+      break;
+      case 'friday':
+      return 7;
+      break;
+      case 'saturday':
+      return 10;
+      break;
+      case 'sunday':
+      return 10;
+      default:
+      console.log('check spelling.');
+    }
+  }
+  
+  const getActualSleepHours = () =>
+   getSleepHours("monday") +
+      getSleepHours("tuesday") +
+      getSleepHours("wednesday") +
+      getSleepHours("thursday") +
+      getSleepHours("friday") +
+      getSleepHours("saturday") +
+      getSleepHours("sunday");
+  
+  const getIdealSleepHours = () => {
+    const idealHours = 8;
+    return idealHours * 7;
+  }
+  
+  const calculateSleepDebt = () => {
+    const actualSleepHours = getActualSleepHours();
+    const idealSleepHours = getIdealSleepHours();
+    if (actualSleepHours === idealSleepHours) {
+      console.log('You slept for ' + actualSleepHours + ' hours, and got the PERFECT amount of sleep!');
+    } else if (actualSleepHours > idealSleepHours) {
+      console.log('Whoa. You slept for ' + (actualSleepHours - idealSleepHours) + ' hours more than needed.');      
+    } else if (actualSleepHours < idealSleepHours) {
+      console.log('Go back to bed. You need ' + (idealSleepHours - actualSleepHours) + ' hours more of rest.');
+    } 
+  }
+  
+  console.log(calculateSleepDebt());
